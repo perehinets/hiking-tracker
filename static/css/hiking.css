@@ -1,0 +1,311 @@
+/*!
+ * Trailhead - hiking tracker UI layer
+ * Sits on top of the Grayscale theme (css/styles.css).
+ * Only three screens: the home page with the hike list, the hike form, and login.
+ */
+
+:root {
+    --trail-primary: #64a19d;
+    --trail-ink: #1a1c1b;
+    --trail-muted: #6c757d;
+    --trail-line: #e3e6e5;
+    --trail-surface: #f8f9fa;
+    --trail-easy: #4f9d69;
+    --trail-moderate: #a8812c;
+    --trail-hard: #a16468;
+}
+
+/* Small label above a heading */
+.eyebrow {
+    font-family: "Varela Round", sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    color: var(--trail-primary);
+}
+
+/* Theme buttons are oversized for app chrome; this is the compact variant */
+.btn-app {
+    padding: 0.65rem 1.4rem !important;
+    font-size: 0.75rem;
+    letter-spacing: 0.1rem;
+}
+
+.navbar-brand .brand-mark {
+    color: var(--trail-primary);
+    margin-right: 0.4rem;
+}
+
+/*
+ * The Grayscale navbar is transparent until the page scrolls, which only works
+ * over the masthead. The form page adds .navbar-solid to stay opaque.
+ */
+#mainNav.navbar-solid {
+    background-color: #fff;
+    box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.08);
+}
+
+@media (min-width: 992px) {
+    #mainNav.navbar-solid .navbar-brand {
+        color: #000;
+    }
+
+    #mainNav.navbar-solid .nav-link {
+        color: #000;
+        padding: 1.5rem 1.5rem 1.25rem;
+    }
+
+    #mainNav.navbar-solid .nav-link:hover {
+        color: var(--trail-primary);
+    }
+}
+
+/* Dark band at the top of an inner page */
+.page-header {
+    padding: 8rem 0 3rem;
+    background: linear-gradient(to bottom, #000 0%, #16211f 100%);
+    color: #fff;
+}
+
+.page-header h1 {
+    font-family: "Varela Round", sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.page-header .lead {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.95rem;
+    margin: 0.5rem 0 0;
+}
+
+.app-main {
+    padding: 3rem 0 6rem;
+    background-color: var(--trail-surface);
+    min-height: 60vh;
+}
+
+/* ---------------------------------------------------------- stat tiles */
+
+.stat-tile {
+    background: #fff;
+    border-bottom: 0.25rem solid var(--trail-primary);
+    padding: 1.75rem 1.5rem;
+    height: 100%;
+}
+
+.stat-tile .stat-label {
+    font-family: "Varela Round", sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    color: var(--trail-muted);
+    margin-bottom: 0.65rem;
+}
+
+.stat-tile .stat-value {
+    font-family: "Varela Round", sans-serif;
+    font-size: 2.1rem;
+    line-height: 1;
+    color: var(--trail-ink);
+}
+
+.stat-tile .stat-value .unit {
+    font-size: 0.9rem;
+    color: var(--trail-muted);
+    margin-left: 0.25rem;
+}
+
+/* ---------------------------------------------------------- hike cards */
+
+.hike-card {
+    background: #fff;
+    border: 1px solid var(--trail-line);
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.hike-card .hike-title {
+    font-family: "Varela Round", sans-serif;
+    font-size: 1.05rem;
+    margin: 0.75rem 0 0.25rem;
+    color: var(--trail-ink);
+}
+
+.hike-card .hike-place {
+    font-size: 0.85rem;
+    color: var(--trail-muted);
+    margin-bottom: 1rem;
+}
+
+.hike-card .hike-notes {
+    font-size: 0.9rem;
+    color: #495057;
+    margin-bottom: 1rem;
+}
+
+.hike-metrics {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--trail-line);
+    font-size: 0.85rem;
+}
+
+.hike-metrics i {
+    color: var(--trail-primary);
+    margin-right: 0.35rem;
+}
+
+.hike-actions {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+}
+
+.hike-actions a,
+.hike-actions button {
+    color: var(--trail-muted);
+    text-decoration: none;
+    background: none;
+    border: 0;
+    padding: 0;
+}
+
+.hike-actions a:hover,
+.hike-actions button:hover {
+    color: var(--trail-primary);
+}
+
+.hike-actions .sep {
+    color: var(--trail-line);
+    margin: 0 0.6rem;
+}
+
+/* -------------------------------------------------------------- badges */
+
+.badge-trail {
+    display: inline-block;
+    font-family: "Varela Round", sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: 0.3rem 0.6rem;
+    color: #fff;
+    background: var(--trail-muted);
+}
+
+.badge-easy { background: var(--trail-easy); }
+.badge-moderate { background: var(--trail-moderate); }
+.badge-hard { background: var(--trail-hard); }
+
+/* --------------------------------------------------------- empty state */
+
+.empty-state {
+    background: #fff;
+    border: 1px dashed var(--trail-line);
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.empty-state i {
+    font-size: 2.5rem;
+    color: var(--trail-primary);
+    margin-bottom: 1rem;
+}
+
+.empty-state p {
+    color: var(--trail-muted);
+    max-width: 24rem;
+    margin: 0 auto 1.5rem;
+}
+
+/* --------------------------------------------------------------- forms */
+
+.form-panel {
+    background: #fff;
+    border: 1px solid var(--trail-line);
+    padding: 2rem;
+}
+
+.form-panel .form-label {
+    font-family: "Varela Round", sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12rem;
+    color: var(--trail-muted);
+    margin-bottom: 0.4rem;
+}
+
+.form-panel .form-control,
+.form-panel .form-select,
+.auth-card .form-control {
+    border-radius: 0;
+    border-color: var(--trail-line);
+    padding: 0.7rem 0.9rem;
+    font-size: 0.95rem;
+}
+
+.form-panel .form-control:focus,
+.form-panel .form-select:focus,
+.auth-card .form-control:focus {
+    border-color: var(--trail-primary);
+    box-shadow: 0 0 0 0.15rem rgba(100, 161, 157, 0.2);
+}
+
+.form-panel .form-text {
+    font-size: 0.8rem;
+    color: var(--trail-muted);
+}
+
+/* ---------------------------------------------------------------- auth */
+
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.85) 100%),
+        url("../assets/img/demo-image-02.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 0;
+}
+
+.auth-card {
+    background: #fff;
+    padding: 2.5rem;
+    max-width: 25rem;
+    margin: 0 auto;
+}
+
+.auth-card .auth-brand {
+    font-family: "Varela Round", sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--trail-ink);
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.auth-card h1 {
+    font-family: "Varela Round", sans-serif;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin-bottom: 1.75rem;
+}
+
+/* -------------------------------------------------------------- footer */
+
+.footer-app {
+    padding: 3rem 0;
+    background: #000;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.85rem;
+}

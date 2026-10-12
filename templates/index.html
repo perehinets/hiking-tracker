@@ -1,0 +1,105 @@
+
+        <!-- Hikes-->
+        <main class="app-main" id="hikes">
+            <div class="container px-4 px-lg-5">
+                <!-- Totals-->
+                <div class="row gx-3 gy-3 mb-5">
+                    <div class="col-12 col-md-4">
+                        <div class="stat-tile">
+                            <div class="stat-label">Hikes</div>
+                            <div class="stat-value">12</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="stat-tile">
+                            <div class="stat-label">Distance</div>
+                            <div class="stat-value">148<span class="unit">km</span></div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <div class="stat-tile">
+                            <div class="stat-label">Elevation gain</div>
+                            <div class="stat-value">6 420<span class="unit">m</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- List heading-->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <div class="eyebrow mb-1">Logbook</div>
+                        <h2 class="h4 mb-0">My hikes</h2>
+                    </div>
+                    <a class="btn btn-primary btn-app" href="hike-form.html"><i class="fas fa-plus me-2"></i>Add hike</a>
+                </div>
+                <!-- Hike list - one card per hike-->
+                <div class="row gx-3 gy-3">
+                    <div class="col-md-6">
+                        <article class="hike-card">
+                            <span class="badge-trail badge-hard align-self-start">Hard</span>
+                            <h3 class="hike-title">Hoverla via Zaroslyak</h3>
+                            <div class="hike-place"><i class="fas fa-location-dot me-1"></i>Chornohora &middot; 12 Sep 2026</div>
+                            <p class="hike-notes">Left the car park at 06:20 with frost on the boardwalk. No view from the top - the whole ridge sat under cloud.</p>
+                            <div class="hike-metrics">
+                                <span><i class="fas fa-route"></i>18.4 km</span>
+                                <span><i class="fas fa-arrow-trend-up"></i>1 180 m</span>
+                            </div>
+                            <div class="hike-actions">
+                                <a href="hike-form.html">Edit</a>
+                                <span class="sep">|</span>
+                                <form class="d-inline" method="post" action="#">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="hike-card">
+                            <span class="badge-trail badge-moderate align-self-start">Moderate</span>
+                            <h3 class="hike-title">Synevyr lake loop</h3>
+                            <div class="hike-place"><i class="fas fa-location-dot me-1"></i>Gorgany &middot; 29 Aug 2026</div>
+                            <p class="hike-notes">Easy forest track most of the way, busy near the lake. Good first hike of the season for someone new.</p>
+                            <div class="hike-metrics">
+                                <span><i class="fas fa-route"></i>11.2 km</span>
+                                <span><i class="fas fa-arrow-trend-up"></i>540 m</span>
+                            </div>
+                            <div class="hike-actions">
+                                <a href="hike-form.html">Edit</a>
+                                <span class="sep">|</span>
+                                <form class="d-inline" method="post" action="#">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="hike-card">
+                            <span class="badge-trail badge-easy align-self-start">Easy</span>
+                            <h3 class="hike-title">Bukovel ridge walk</h3>
+                            <div class="hike-place"><i class="fas fa-location-dot me-1"></i>Carpathians &middot; 10 Aug 2026</div>
+                            <p class="hike-notes">Half a day with the family. Gondola up, walked the ridge, came down on foot through the meadows.</p>
+                            <div class="hike-metrics">
+                                <span><i class="fas fa-route"></i>7.5 km</span>
+                                <span><i class="fas fa-arrow-trend-up"></i>260 m</span>
+                            </div>
+                            <div class="hike-actions">
+                                <a href="hike-form.html">Edit</a>
+                                <span class="sep">|</span>
+                                <form class="d-inline" method="post" action="#">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <!--
+                    Empty state - show this instead of the list when there are no hikes yet:
+
+                    <div class="empty-state">
+                        <i class="fas fa-shoe-prints"></i>
+                        <p>No hikes yet. Add the last trail you walked and the totals will start filling in.</p>
+                        <a class="btn btn-primary btn-app" href="hike-form.html">Add your first hike</a>
+                    </div>
+                -->
+            </div>
+        </main>
+
