@@ -1,6 +1,7 @@
-{% include "includes/header.html" %}
-        <!-- Hikes-->
-        <main class="app-main" id="hikes">
+{% extends 'base.html' %}
+
+{% block content %}
+	<main class="app-main" id="hikes">
             <div class="container px-4 px-lg-5">
                 <!-- Totals-->
                 <div class="row gx-3 gy-3 mb-5">
@@ -92,5 +93,5 @@
                     </div>
                 </div>
             </div>
-        </main>gi
-{% include "includes/footer.html" %}
+        </main>
+{% endblock %}
