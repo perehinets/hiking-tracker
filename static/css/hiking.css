@@ -66,6 +66,11 @@
     background: linear-gradient(to bottom, #000 0%, #16211f 100%);
     color: #fff;
 }
+.profile-page-header {
+    padding: 3rem 0 3rem;
+    background: linear-gradient(to bottom, #000 0%, #16211f 100%);
+    color: #fff;
+}
 
 .page-header h1 {
     font-family: "Varela Round", sans-serif;
@@ -308,4 +313,13 @@
     background: #000;
     color: rgba(255, 255, 255, 0.4);
     font-size: 0.85rem;
+}
+
+.nav-logout {
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
 }
