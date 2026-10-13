@@ -14,6 +14,6 @@ def index(request):
 
     return render(
         request,
-        "index.html",
+        "tracker/index.html",
         context
     )
