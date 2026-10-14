@@ -33,7 +33,10 @@
           <div class="eyebrow mb-1">Logbook</div>
           <h2 class="h4 mb-0">My hikes</h2>
         </div>
-        <a class="btn btn-primary btn-app" href="hike-form.html"><i class="fas fa-plus me-2"></i>Add hike</a>
+        <a class="btn btn-primary btn-app" href="{% url 'tracker:add-hike' %}"><i class="fas fa-plus me-2"></i>Add hike</a>
+        <div><a class="btn btn-primary btn-app" href="{% url 'tracker:add-route' %}"><i class="fas fa-plus me-2"></i>Add
+          Route</a>
+        </div>
       </div>
       <!-- Hike list - one card per hike-->
       <div class="row gx-3 gy-3">
@@ -49,7 +52,7 @@
               <span><i class="fas fa-arrow-trend-up"></i>1 180 m</span>
             </div>
             <div class="hike-actions">
-              <a href="hike-form.html">Edit</a>
+              <a href="hike_form.html">Edit</a>
               <span class="sep">|</span>
               <form class="d-inline" method="post" action="#">
                 <button type="submit">Delete</button>
@@ -69,7 +72,7 @@
               <span><i class="fas fa-arrow-trend-up"></i>540 m</span>
             </div>
             <div class="hike-actions">
-              <a href="hike-form.html">Edit</a>
+              <a href="hike_form.html">Edit</a>
               <span class="sep">|</span>
               <form class="d-inline" method="post" action="#">
                 <button type="submit">Delete</button>
@@ -89,7 +92,7 @@
               <span><i class="fas fa-arrow-trend-up"></i>260 m</span>
             </div>
             <div class="hike-actions">
-              <a href="hike-form.html">Edit</a>
+              <a href="hike_form.html">Edit</a>
               <span class="sep">|</span>
               <form class="d-inline" method="post" action="#">
                 <button type="submit">Delete</button>
