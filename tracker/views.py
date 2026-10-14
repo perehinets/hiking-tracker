@@ -14,14 +14,14 @@ from tracker.models import Hike, Route, Hiker
 def index(request):
     num_hikes = Hike.objects.all().count()
     num_hikers = Hiker.objects.all().count()
-    sum_distance = Hike.objects.all().aggregate(Sum('distance'))
-    sum_elevation = Hike.objects.all().aggregate(Sum('elevation'))
+    # sum_distance = Hike.objects.all().aggregate(Sum('distance'))
+    # sum_elevation = Hike.objects.all().aggregate(Sum('elevation'))
 
     context = {
         "num_hikes": num_hikes,
         "num_hikers": num_hikers,
-        "sum_distance": sum_distance,
-        "sum_elevation": sum_elevation
+        # "sum_distance": sum_distance,
+        # "sum_elevation": sum_elevation
     }
 
     return render(
