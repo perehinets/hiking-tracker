@@ -8,9 +8,10 @@ class HikeCreationForm(forms.ModelForm):
         model = Hike
         fields = [
             "name",
+            "route",
+            "date",
             "description",
             "max_hikers",
-            "route",
         ]
 
 
