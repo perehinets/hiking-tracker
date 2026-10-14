@@ -9,18 +9,14 @@ class HikeCreationForm(forms.ModelForm):
         fields = [
             "name",
             "description",
-            "distance",
-            "elevation",
             "max_hikers",
             "route",
         ]
 
 
 class RouteCreationForm(forms.ModelForm):
-    difficulty = forms.ModelMultipleChoiceField(
-        queryset=Difficulty.objects.all(),
-        widget=forms.SelectMultiple,
-        required=False,
+    difficulty = forms.ModelChoiceField(
+        queryset=Difficulty.objects.all()
     )
 
     class Meta:
