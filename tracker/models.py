@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -26,10 +28,14 @@ class Route(models.Model):
         related_name='routes',
     )
 
+    def __str__(self):
+        return f"{self.name}, {self.location}, {self.distance}, {self.elevation}, {self.difficulty}"
 
 class Hike(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
+    date = models.DateField(default=datetime.datetime.now)
+    route = models.ForeignKey(Route, on_delete=models.CASCADE)
     max_hikers = models.IntegerField(default=0)
     hikers = models.ManyToManyField(Hiker)
     route = models.ForeignKey(
