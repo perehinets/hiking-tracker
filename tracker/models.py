@@ -1,4 +1,5 @@
 import datetime
+from typing import List
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -37,7 +38,7 @@ class Hike(models.Model):
     date = models.DateField(default=datetime.datetime.now)
     route = models.ForeignKey(Route, on_delete=models.CASCADE)
     max_hikers = models.IntegerField(default=0)
-    hikers = models.ManyToManyField(Hiker)
+    hikers = models.ManyToManyField(Hiker, related_name='hikes')
     route = models.ForeignKey(
         Route,
         on_delete=models.CASCADE,

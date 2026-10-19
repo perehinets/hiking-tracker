@@ -13,6 +13,7 @@
     --trail-easy: #4f9d69;
     --trail-moderate: #a8812c;
     --trail-hard: #a16468;
+    --trail-alpine: #3d1313;
 }
 
 /* Small label above a heading */
@@ -207,6 +208,7 @@
 .badge-easy { background: var(--trail-easy); }
 .badge-moderate { background: var(--trail-moderate); }
 .badge-hard { background: var(--trail-hard); }
+.badge-alpine { background: var(--trail-alpine); }
 
 /* --------------------------------------------------------- empty state */
 

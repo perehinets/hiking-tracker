@@ -10,59 +10,9 @@
           <h1 class="mx-auto my-0 text-uppercase">Hiking Tracker</h1>
           <h2 class="text-white-50 mx-auto mt-2 mb-5">A simple logbook for your hikes: where you went, how far, and how
             much you climbed.</h2>
-          <a class="btn btn-primary" href="#hikes">See All hikes</a>
+          <a class="btn btn-primary" href="{% url 'tracker:hikes-list' %}">See All hikes</a>
         </div>
       </div>
     </div>
   </header>
-  <main class="app-main" id="hikes">
-    <div class="container px-4 px-lg-5">
-      <!-- Totals-->
-      <div class="row gx-3 gy-3 mb-5">
-        <div class="col-12 col-md-4">
-          <div class="stat-tile">
-            <div class="stat-label">Hikes</div>
-            <div class="stat-value">12</div>
-          </div>
-        </div>
-        <div class="col-6 col-md-4">
-          <div class="stat-tile">
-            <div class="stat-label">Distance</div>
-            <div class="stat-value">148<span class="unit">km</span></div>
-          </div>
-        </div>
-        <div class="col-6 col-md-4">
-          <div class="stat-tile">
-            <div class="stat-label">Elevation gain</div>
-            <div class="stat-value">6 420<span class="unit">m</span></div>
-          </div>
-        </div>
-      </div>
-      <!-- List heading-->
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-          <h2 class="h4 mb-0">All hikes</h2>
-        </div>
-      </div>
-      <!-- Hike list - one card per hike-->
-      <div class="row gx-3 gy-3">
-        <div class="col-md-6">
-          <article class="hike-card">
-            <span class="badge-trail badge-hard align-self-start">Hard</span>
-            <h3 class="hike-title">Hoverla via Zaroslyak</h3>
-            <div class="hike-place"><i class="fas fa-location-dot me-1"></i>Chornohora &middot; 12 Sep 2026</div>
-            <p class="hike-notes">Left the car park at 06:20 with frost on the boardwalk. No view from the top - the
-              whole ridge sat under cloud.</p>
-            <div class="hike-metrics">
-              <span><i class="fas fa-route"></i>18.4 km</span>
-              <span><i class="fas fa-arrow-trend-up"></i>1 180 m</span>
-              <span><i class="fas fa-hikers"></i>20</span>
-            </div>
-            <div class="hike-actions">
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-  </main>
 {% endblock %}
