@@ -44,3 +44,11 @@ class Hike(models.Model):
         on_delete=models.CASCADE,
         related_name='hikes',
     )
+
+    @property
+    def leader(self):
+        through_model = self.hikers.through
+        first_hiker = through_model.objects.filter(
+            hike_id=self.id
+        ).order_by("id").first()
+        return first_hiker.hiker if first_hiker else None

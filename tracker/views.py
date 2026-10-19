@@ -19,14 +19,39 @@ def index(request):
 
 class ProfileView(LoginRequiredMixin, generic.ListView):
     model = Hike
+    paginate_by = 6
     template_name = "tracker/profile.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user_hikes = Hike.objects.filter(hikers=self.request.user)
+        context["user_hikes"] = user_hikes
+        context["all_hikes"] = user_hikes.count()
+        context["all_distances"] = (
+                user_hikes.aggregate(total=Sum("route__distance"))["total"] or 0
+        )
+        context["all_elevations"] = (
+                user_hikes.aggregate(total=Sum("route__elevation"))["total"] or 0
+        )
+        return context
 
 
 class HikeListView(LoginRequiredMixin, generic.ListView):
     model = Hike
     paginate_by = 6
+    all_hikes = Hike.objects.all().count()
+    all_distances = Hike.objects.aggregate(
+        total=Sum("route__distance")
+    )["total"] or 0
+
+    all_elevations = Hike.objects.aggregate(
+        total=Sum("route__elevation")
+    )["total"] or 0
     extra_context = {
-        "today": datetime.date.today()
+        "today": datetime.date.today(),
+        "all_hikes": all_hikes,
+        "all_distances": all_distances,
+        "all_elevations": all_elevations,
     }
 
 

@@ -11,19 +11,19 @@
         <div class="col-12 col-md-4">
           <div class="stat-tile">
             <div class="stat-label">Hikes</div>
-            <div class="stat-value">12</div>
+            <div class="stat-value">{{ all_hikes }}</div>
           </div>
         </div>
         <div class="col-6 col-md-4">
           <div class="stat-tile">
             <div class="stat-label">Distance</div>
-            <div class="stat-value">148<span class="unit">km</span></div>
+            <div class="stat-value">{{ all_distances }}<span class="unit">km</span></div>
           </div>
         </div>
         <div class="col-6 col-md-4">
           <div class="stat-tile">
             <div class="stat-label">Elevation gain</div>
-            <div class="stat-value">6 420<span class="unit">m</span></div>
+            <div class="stat-value">{{ all_elevations }}<span class="unit">m</span></div>
           </div>
         </div>
       </div>
@@ -44,10 +44,11 @@
               <div class="hike-place"><i class="fas fa-location-dot me-1"></i>{{ hike.route.location }}
                 &middot; {{ hike.date }}</div>
               <p class="hike-notes">{{ hike.description }}</p>
+              <p class="hike-notes">Leader: {{ hike.leader.username|default:"Not assigned" }} </p>
               <div class="hike-metrics">
                 <span><i class="fas fa-route"></i>{{ hike.route.distance }} km</span>
-                <span><i class="fas fa-arrow-trend-up"></i>{{ hike.route.distance }} m</span>
-                <span><i class="fas"></i> {{ hike.hikers.count }} / {{ hike.max_hikers }} person</span>
+                <span><i class="fas fa-arrow-trend-up"></i>{{ hike.route.elevation }} m</span>
+                <span>{{ hike.hikers.count }} / {{ hike.max_hikers }} person</span>
               </div>
               <div class="hike-actions">
                 {% if user in hike.hikers %}
