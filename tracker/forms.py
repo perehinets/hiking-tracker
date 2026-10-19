@@ -23,3 +23,4 @@ class RouteCreationForm(forms.ModelForm):
     class Meta:
         model = Route
         fields = "__all__"
+
