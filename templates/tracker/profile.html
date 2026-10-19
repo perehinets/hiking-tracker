@@ -11,19 +11,19 @@
         <div class="col-12 col-md-4">
           <div class="stat-tile">
             <div class="stat-label">Hikes</div>
-            <div class="stat-value">12</div>
+            <div class="stat-value"> {{ all_hikes }}</div>
           </div>
         </div>
         <div class="col-6 col-md-4">
           <div class="stat-tile">
             <div class="stat-label">Distance</div>
-            <div class="stat-value">148<span class="unit">km</span></div>
+            <div class="stat-value">{{ all_distances }}<span class="unit">km</span></div>
           </div>
         </div>
         <div class="col-6 col-md-4">
           <div class="stat-tile">
             <div class="stat-label">Elevation gain</div>
-            <div class="stat-value">6 420<span class="unit">m</span></div>
+            <div class="stat-value">{{ all_elevations }}<span class="unit">m</span></div>
           </div>
         </div>
       </div>
@@ -33,35 +33,54 @@
           <div class="eyebrow mb-1">Logbook</div>
           <h2 class="h4 mb-0">My hikes</h2>
         </div>
-        <a class="btn btn-primary btn-app" href="{% url 'tracker:add-hike' %}"><i class="fas fa-plus me-2"></i>Add hike</a>
-        <div><a class="btn btn-primary btn-app" href="{% url 'tracker:add-route' %}"><i class="fas fa-plus me-2"></i>Add
-          Route</a>
+        <div class="d-flex align-items-center justify-content-end">
+          <p class="p-1"><a class="btn btn-toolbar btn-app" href="{% url 'tracker:add-hike' %}"><i
+              class="fas fa-plus me-2"></i>Add hike</a>
+          </p>
+          <p class="p-1"><a class="btn btn-toolbar btn-app" href="{% url 'tracker:add-route' %}"><i
+              class="fas fa-plus me-2"></i>Add Route</a>
+          </p>
         </div>
       </div>
       <!-- Hike list - one card per hike-->
       <div class="row gx-3 gy-3">
-        <div class="col-md-6">
-          <article class="hike-card">
-            <span class="badge-trail badge-hard align-self-start">Hard</span>
-            <h3 class="hike-title">Hoverla via Zaroslyak</h3>
-            <div class="hike-place"><i class="fas fa-location-dot me-1"></i>Chornohora &middot; 12 Sep 2026</div>
-            <p class="hike-notes">Left the car park at 06:20 with frost on the boardwalk. No view from the top - the
-              whole ridge sat under cloud.</p>
-            <div class="hike-metrics">
-              <span><i class="fas fa-route"></i>18.4 km</span>
-              <span><i class="fas fa-arrow-trend-up"></i>1 180 m</span>
-            </div>
-            <div class="hike-actions">
-              <a href="hike_form.html">Edit</a>
-              <span class="sep">|</span>
-              <form class="d-inline" method="post" action="#">
-                <button type="submit">Delete</button>
-              </form>
-            </div>
-          </article>
-        </div>
-
+        {% for hike in user_hikes %}
+          <div class="col-md-6">
+            <article class="hike-card">
+              <span
+                  class="badge-trail badge-{{ hike.route.difficulty.name }} align-self-start">{{ hike.route.difficulty.name }}</span>
+              <h3 class="hike-title">{{ hike.name }}</h3>
+              <div class="hike-place"><i class="fas fa-location-dot me-1"></i>{{ hike.route.location }}
+                &middot; {{ hike.date }}</div>
+              <p class="hike-notes">{{ hike.description }}</p>
+              <p class="hike-notes">Leader: {{ hike.leader.username|default:"Not assigned" }} </p>
+              <div class="hike-metrics">
+                <span><i class="fas fa-route"></i>{{ hike.route.distance }} km</span>
+                <span><i class="fas fa-arrow-trend-up"></i>{{ hike.route.elevation }} m</span>
+                <span>{{ hike.hikers.count }} / {{ hike.max_hikers }} person</span>
+              </div>
+              <div class="hike-actions">
+                {% if user in hike.hikers %}
+                  <form class="d-inline" method="post" action="#">
+                    <button type="submit">Cancel</button>
+                  </form>
+                {% else %}
+                  {{ hike.date }}
+                  {% if hike.date > today %}
+                    {% if hike.hikers.count < hike.max_hikers %}
+                      <form class="d-inline" method="post" action="#">
+                        <button type="submit">Edit</button>
+                      </form>
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+              </div>
+            </article>
+          </div>
+        {% endfor %}
       </div>
     </div>
+    </div>
+
   </main>
 {% endblock %}
