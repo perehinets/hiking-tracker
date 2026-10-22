@@ -56,7 +56,7 @@ class HikeListView(LoginRequiredMixin, generic.ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(HikeListView, self).get_context_data(**kwargs)
-        model = self.request.GET.get("model", "")
+        hike = self.request.GET.get("hike", "")
 
         all_hikes = Hike.objects.all().count()
         all_distances = Hike.objects.aggregate(
@@ -71,7 +71,7 @@ class HikeListView(LoginRequiredMixin, generic.ListView):
         context["all_distances"] = all_distances
         context["all_elevations"] = all_elevations
         context["search_form"] = HikeSearchForm(
-            initial={"model": model}
+            initial={"hike": hike}
         )
         return context
 
