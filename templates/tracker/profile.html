@@ -72,11 +72,12 @@
                 <div class="actions"><a href="{% url 'tracker:hike-update' pk=hike.id %}">Edit</a>
                   <a href=" {% url 'tracker:hike-delete' pk=hike.id %}">Delete</a></div>
               {% endif %}
+
+              <p><a href="{% url 'tracker:hike-detail' pk=hike.id %}">Detail</a></p>
             </article>
           </div>
         {% endfor %}
       </div>
-    </div>
     </div>
 
   </main>

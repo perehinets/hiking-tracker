@@ -59,12 +59,12 @@
                   {{ hike.date }}
                   {% if hike.date > today %}
                     {% if hike.hikers.count < hike.max_hikers %}
-                      <form class="d-inline" method="post" action="#">
-                        <button type="submit">Join</button>
-                      </form>
+                      <a type="submit" href="{% url 'tracker:hike-join-hiker' pk=hike.id %}">Join</a>
                     {% endif %}
                   {% endif %}
                 {% endif %}
+
+                <p><a href="{% url 'tracker:hike-detail' pk=hike.id %}">Detail</a></p>
               </div>
             </article>
           </div>
