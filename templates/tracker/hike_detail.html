@@ -7,35 +7,40 @@
   <main class="app-main" id="hikes">
     <div class="container px-4 px-lg-5">
       <!-- Hike list - one card per hike-->
-          <article class="hike-card">
+      <article class="hike-card">
               <span
                   class="badge-trail badge-{{ hike.route.difficulty.name }} align-self-start">{{ hike.route.difficulty.name }}</span>
-            <h3 class="hike-title">{{ hike.name }}</h3>
-            <div class="hike-place"><i class="fas fa-location-dot me-1"></i>{{ hike.route.location }}
-              &middot; {{ hike.date }}</div>
-            <p class="hike-notes">{{ hike.description }}</p>
-            <p class="hike-notes">Leader: {{ hike.leader.username|default:"Not assigned" }} </p>
-            <div class="hike-metrics">
-              <span><i class="fas fa-route"></i>{{ hike.route.distance }} km</span>
-              <span><i class="fas fa-arrow-trend-up"></i>{{ hike.route.elevation }} m</span>
-              <span>{{ hike.hikers.count }} / {{ hike.max_hikers }} person</span>
-            </div>
-            <div class="hike-actions">
-              {{ hike.date }}
-              {% if user in hike.hikers %}
-                <form class="d-inline" method="post" action="#">
-                  <button type="submit">Cancel</button>
-                </form>
-              {% endif %}
-
-            </div>
-            {% if hike.leader.username == user.username %}
-              <div class="actions"><a href="{% url 'tracker:hike-update' pk=hike.id %}">Edit</a>
-                <a href=" {% url 'tracker:hike-delete' pk=hike.id %}">Delete</a></div>
-            {% endif %}
-          </article>
+        <h3 class="hike-title">{{ hike.name }}</h3>
+        <div class="hike-place"><i class="fas fa-location-dot me-1"></i>{{ hike.route.location }}
+          &middot; {{ hike.date }}</div>
+        <p class="hike-notes">{{ hike.description }}</p>
+        <p class="hike-notes">Leader: {{ hike.leader.username|default:"Not assigned" }} </p>
+        <p class="hike-notes">Hikers:
+          {% for hiker in  hike.hikers.all %}
+            {{ hiker.username }}{% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </p>
+        <div class="hike-metrics">
+          <span><i class="fas fa-route"></i>{{ hike.route.distance }} km</span>
+          <span><i class="fas fa-arrow-trend-up"></i>{{ hike.route.elevation }} m</span>
+          <span>{{ hike.hikers.count }} / {{ hike.max_hikers }} person</span>
         </div>
-      </div>
+        <div class="hike-actions">
+          {{ hike.date }}
+          {% if user in hike.hikers %}
+            <form class="d-inline" method="post" action="#">
+              <button type="submit">Cancel</button>
+            </form>
+          {% endif %}
+
+        </div>
+        {% if hike.leader.username == user.username %}
+          <div class="actions"><a href="{% url 'tracker:hike-update' pk=hike.id %}">Edit</a>
+            <a href=" {% url 'tracker:hike-delete' pk=hike.id %}">Delete</a></div>
+        {% endif %}
+      </article>
+    </div>
+    </div>
     </div>
     </div>
 
