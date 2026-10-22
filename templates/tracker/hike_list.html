@@ -63,9 +63,8 @@
                     {% endif %}
                   {% endif %}
                 {% endif %}
-
-                <p><a href="{% url 'tracker:hike-detail' pk=hike.id %}">Detail</a></p>
               </div>
+              <p><a href="{% url 'tracker:hike-detail' pk=hike.id %}">Detail</a></p>
             </article>
           </div>
         {% endfor %}
