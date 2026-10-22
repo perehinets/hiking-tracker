@@ -7,7 +7,7 @@ from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View, generic
-from tracker.forms import HikeCreationForm, RouteCreationForm
+from tracker.forms import HikeCreationForm, RouteCreationForm, HikeSearchForm
 
 from tracker.models import Hike, Route, Hiker
 
@@ -52,21 +52,38 @@ class ProfileView(LoginRequiredMixin, generic.ListView):
 class HikeListView(LoginRequiredMixin, generic.ListView):
     model = Hike
     paginate_by = 6
-    all_hikes = Hike.objects.all().count()
-    all_distances = Hike.objects.aggregate(
-        total=Sum("route__distance")
-    )["total"] or 0
 
-    all_elevations = Hike.objects.aggregate(
-        total=Sum("route__elevation")
-    )["total"] or 0
-    extra_context = {
-        "today": datetime.date.today(),
-        "all_hikes": all_hikes,
-        "all_distances": all_distances,
-        "all_elevations": all_elevations,
-    }
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(HikeListView, self).get_context_data(**kwargs)
+        model = self.request.GET.get("model", "")
+
+        all_hikes = Hike.objects.all().count()
+        all_distances = Hike.objects.aggregate(
+            total=Sum("route__distance")
+        )["total"] or 0
+
+        all_elevations = Hike.objects.aggregate(
+            total=Sum("route__elevation")
+        )["total"] or 0
+        context["today"] = datetime.date.today()
+        context["all_hikes"] = all_hikes
+        context["all_distances"] = all_distances
+        context["all_elevations"] = all_elevations
+        context["search_form"] = HikeSearchForm(
+            initial={"model": model}
+        )
+        return context
+
+
+    def get_queryset(self):
+        queryset = Hike.objects.all()
+        form = HikeSearchForm(self.request.GET)
+        if form.is_valid():
+            return queryset.filter(
+                name__icontains=form.cleaned_data["hike"]
+            )
+        return queryset
 
 class HikeDetailView(LoginRequiredMixin, generic.DetailView):
     model = Hike

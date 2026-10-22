@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load crispy_forms_filters %}
 {% block content %}
   {% include 'includes/navbar.html' %}
   <!-- Masthead-->
@@ -28,10 +29,14 @@
         </div>
       </div>
       <!-- List heading-->
-      <div class="d-flex justify-content-between align-items-center mb-4">
-        <div>
-          <h2 class="h4 mb-0">All hikes</h2>
-        </div>
+      <div class="row gx-0 gy-0 mb-5">
+        <form action="" method="get" class="form-panel">
+          <div class="col-mb-6">
+            {{ search_form|crispy }}</div>
+          <div class="col-mb-6">
+            <input type="submit" value="Find Hikes" class="btn btn-toolbar btn-app">
+          </div>
+        </form>
       </div>
       <!-- Hike list - one card per hike-->
       <div class="row gx-3 gy-3">
