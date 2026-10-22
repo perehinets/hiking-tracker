@@ -51,13 +51,11 @@
                 <span>{{ hike.hikers.count }} / {{ hike.max_hikers }} person</span>
               </div>
               <div class="hike-actions">
-                {% if user in hike.hikers %}
-                  <form class="d-inline" method="post" action="#">
-                    <button type="submit">Cancel</button>
-                  </form>
-                {% else %}
-                  {{ hike.date }}
-                  {% if hike.date > today %}
+                {{ hike.date }}
+                {% if hike.date > today %}
+                  {% if user in hike.hikers.all %}
+                    <a type="submit" href="{% url 'tracker:hike-remove-hiker' pk=hike.id %}">Cancel</a>
+                  {% else %}
                     {% if hike.hikers.count < hike.max_hikers %}
                       <a type="submit" href="{% url 'tracker:hike-join-hiker' pk=hike.id %}">Join</a>
                     {% endif %}
