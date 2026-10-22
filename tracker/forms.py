@@ -25,3 +25,14 @@ class RouteCreationForm(forms.ModelForm):
         model = Route
         fields = "__all__"
 
+
+class HikeSearchForm(forms.Form):
+    hike = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search hikes...",}
+        ),
+    )
