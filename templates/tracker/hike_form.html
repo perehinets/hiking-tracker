@@ -15,7 +15,7 @@
             {{ form|crispy }}
 
             <div class="d-flex flex-wrap gap-2 mt-4">
-              <button class="btn btn-primary btn-app" type="submit">Add hike</button>
+              <button class="btn btn-primary btn-app" type="submit">{{ object|yesno:"Update hike,Add hike" }}</button>
               <a class="btn btn-outline-secondary btn-app" href="{% url 'tracker:profile' %}">Cancel</a>
             </div>
           </form>
