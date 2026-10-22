@@ -19,7 +19,6 @@ def index(request):
 
 class ProfileView(LoginRequiredMixin, generic.ListView):
     model = Hike
-    paginate_by = 6
     template_name = "tracker/profile.html"
 
     def get_context_data(self, **kwargs):
@@ -58,6 +57,17 @@ class HikeListView(LoginRequiredMixin, generic.ListView):
 class HikeCreationView(LoginRequiredMixin, generic.CreateView):
     model = Hike
     form_class = HikeCreationForm
+    success_url = reverse_lazy("tracker:profile")
+
+
+class HikeUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Hike
+    fields = "__all__"
+    success_url = reverse_lazy("tracker:profile")
+
+
+class HikeDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Hike
     success_url = reverse_lazy("tracker:profile")
 
 
