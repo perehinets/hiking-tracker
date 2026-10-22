@@ -21,14 +21,14 @@ def index(request):
 def hike_join_view(request, pk):
     hike = Hike.objects.get(pk=pk)
     hike.hikers.add(request.user)
-    return redirect("tracker:hikes-list", pk=pk)
+    return redirect("tracker:hikes-list")
 
 
 @login_required
 def hike_remove_view(request, pk):
     hike = Hike.objects.get(pk=pk)
     hike.hikers.remove(request.user)
-    return redirect("tracker:profile", pk=pk)
+    return redirect("tracker:hikes-list")
 
 
 class ProfileView(LoginRequiredMixin, generic.ListView):
@@ -70,6 +70,9 @@ class HikeListView(LoginRequiredMixin, generic.ListView):
 
 class HikeDetailView(LoginRequiredMixin, generic.DetailView):
     model = Hike
+    extra_context = {
+        "today": datetime.date.today()
+    }
 
 
 class HikeCreationView(LoginRequiredMixin, generic.CreateView):
