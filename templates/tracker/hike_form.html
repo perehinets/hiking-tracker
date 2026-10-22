@@ -9,7 +9,6 @@
   <main class="app-main">
     <div class="container px-4 px-lg-5">
       <div class="row">
-        <div class="col-lg-8">
           <form class="form-panel" method="post" action="" novalidate>
             {% csrf_token %}
             {{ form|crispy }}
@@ -21,6 +20,5 @@
           </form>
         </div>
       </div>
-    </div>
   </main>
 {% endblock %}
