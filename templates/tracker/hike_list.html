@@ -29,15 +29,39 @@
         </div>
       </div>
       <!-- List heading-->
-      <div class="row gx-0 gy-0 mb-5">
-        <form action="" method="get" class="form-panel">
-          <div class="col-mb-6">
-            {{ search_form|crispy }}</div>
-          <div class="col-mb-6">
+      <div class="row gx-3 gy-3">
+
+        <div class="col-md-6">
+          <form action="" method="get" class="form-panel mb-3">
+            {{ search_form|crispy }}
             <input type="submit" value="Find Hikes" class="btn btn-outline-success btn-app">
-          </div>
-        </form>
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <form action="" method="get" class="form-panel">
+            <label for="difficulty" class="gx-0 gy-0 mb-3">Choose a difficulty:</label>
+            <select name="difficulty" id="difficulty" class="form-select mb-3" onchange="this.form.submit()">
+              <option value="" selected="selected" class="selected">All difficulties</option>
+              <option value="1"
+                  {% if request.GET.difficulty == "1" %} selected="selected" {% endif %}
+              >Easy
+              </option>
+              <option value="2"
+                  {% if request.GET.difficulty == "2" %} selected="selected" {% endif %}>Moderate
+              </option>
+              <option value="3"
+                  {% if request.GET.difficulty == "3" %} selected="selected" {% endif %}>Hard
+              </option>
+              <option value="4"
+                  {% if request.GET.difficulty == "4" %} selected="selected" {% endif %}>Alpine
+              </option>
+            </select>
+          </form>
+        </div>
+
       </div>
+
       <!-- Hike list - one card per hike-->
       <div class="row gx-3 gy-3">
         {% for hike in hike_list %}

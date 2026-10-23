@@ -80,9 +80,19 @@ class HikeListView(LoginRequiredMixin, generic.ListView):
         queryset = Hike.objects.all()
         form = HikeSearchForm(self.request.GET)
         if form.is_valid():
-            return queryset.filter(
-                name__icontains=form.cleaned_data["hike"]
-            )
+            hike = form.cleaned_data["hike"]
+            difficulty = self.request.GET.get("difficulty", "")
+
+            if hike:
+                 queryset = queryset.filter(
+                    name__icontains=form.cleaned_data["hike"]
+                )
+
+            if difficulty:
+                queryset = queryset.filter(
+                    route__difficulty=difficulty
+                )
+
         return queryset
 
 class HikeDetailView(LoginRequiredMixin, generic.DetailView):
