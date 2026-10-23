@@ -6,13 +6,32 @@
   </header>
   <main class="app-main" id="hikes">
 
+  <div class="container px-4 px-lg-5">
+      <!-- Hike list - one card per hike-->
+      <article class="hike-card">
+              <span
+                  class="badge-trail badge-{{ hike.route.difficulty.name }} align-self-start">{{ hike.route.difficulty.name }}</span>
+        <h3 class="hike-title">{{ hike.name }}</h3>
+        <div class="hike-place"><i class="fas fa-location-dot me-1"></i>{{ hike.route.location }}
+          &middot; {{ hike.date }}</div>
+        <p class="hike-notes">{{ hike.description }}</p>
+        <p class="hike-notes">Leader: {{ hike.leader.username|default:"Not assigned" }} </p>
+        <div class="hike-metrics">
+          <span><i class="fas fa-route"></i>{{ hike.route.distance }} km</span>
+          <span><i class="fas fa-arrow-trend-up"></i>{{ hike.route.elevation }} m</span>
+          <span>{{ hike.hikers.count }} / {{ hike.max_hikers }} person</span>
+        </div>
+      </article>
+    </div>
+
     <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
       <h1>Delete hike?</h1>
       <form action="" method="post">
         {% csrf_token %}
 
-        <input type="submit" value="Yes" class="btn btn-danger">
-        <a href="{% url 'tracker:profile' %}" class="btn btn-primary">Cancel</a>
+        <button class="btn btn-outline-danger btn-app" type="submit">Yes</button>
+        <a class="btn btn-outline-secondary btn-app" href="{% url 'tracker:profile' %}">Cancel</a>
+
       </form>
     </div>
   </main>
