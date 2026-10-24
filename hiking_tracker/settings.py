@@ -139,6 +139,6 @@ MAILERS = {
 
 AUTH_USER_MODEL = 'tracker.Hiker'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/profile/'
 
 LOGOUT_REDIRECT_URL = '/'

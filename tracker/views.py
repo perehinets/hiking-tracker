@@ -7,12 +7,11 @@ from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View, generic
-from tracker.forms import HikeCreationForm, RouteCreationForm, HikeSearchForm
+from tracker.forms import HikeCreationForm, RouteCreationForm, HikeSearchForm, HikerCreationForm
 
 from tracker.models import Hike, Route, Hiker
 
 
-@login_required
 def index(request):
     return render(request,"tracker/index.html")
 
@@ -122,4 +121,9 @@ class HikeDeleteView(LoginRequiredMixin, generic.DeleteView):
 class RouteCreationView(LoginRequiredMixin, generic.CreateView):
     model = Route
     form_class = RouteCreationForm
+    success_url = reverse_lazy("tracker:profile")
+
+class HikerCreationView(LoginRequiredMixin, generic.CreateView):
+    model = Hiker
+    form_class = HikerCreationForm
     success_url = reverse_lazy("tracker:profile")
