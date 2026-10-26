@@ -67,4 +67,5 @@ class HikerCreationForm(UserCreationForm):
             "first_name",
             "last_name",
             "birth_date",
+            "gender",
         )
