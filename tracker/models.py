@@ -1,5 +1,4 @@
 import datetime
-from typing import List
 
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -8,6 +7,9 @@ from django.db import models
 class Hiker(AbstractUser):
     gender = models.CharField(choices=((1, "male"), (0, "female")))
     birth_date = models.DateField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
 
 
 class Difficulty(models.Model):
@@ -30,7 +32,8 @@ class Route(models.Model):
     )
 
     def __str__(self):
-        return f"{self.name}, {self.location}, {self.distance}, {self.elevation}, {self.difficulty}"
+        return self.name
+
 
 class Hike(models.Model):
     name = models.CharField(max_length=255)
@@ -44,6 +47,9 @@ class Hike(models.Model):
         on_delete=models.CASCADE,
         related_name='hikes',
     )
+
+    def __str__(self):
+        return self.name
 
     @property
     def leader(self):

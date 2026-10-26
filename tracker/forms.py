@@ -34,7 +34,8 @@ class HikeSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Search hikes...",}
+                "placeholder": "Search hikes...",
+            }
         ),
     )
 
@@ -60,6 +61,7 @@ class HikerCreationForm(UserCreationForm):
             }
         )
     )
+
     class Meta:
         model = Hiker
         fields = UserCreationForm.Meta.fields + (

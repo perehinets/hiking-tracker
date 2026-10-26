@@ -1,19 +1,23 @@
 import datetime
 
-from django import forms
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views import View, generic
-from tracker.forms import HikeCreationForm, RouteCreationForm, HikeSearchForm, HikerCreationForm
+from django.views import generic
+from tracker.forms import (
+    HikeCreationForm,
+    RouteCreationForm,
+    HikeSearchForm,
+    HikerCreationForm
+)
 
 from tracker.models import Hike, Route, Hiker
 
 
 def index(request):
-    return render(request,"tracker/index.html")
+    return render(request, "tracker/index.html")
 
 
 @login_required
@@ -40,10 +44,12 @@ class ProfileView(LoginRequiredMixin, generic.ListView):
         context["user_hikes"] = user_hikes
         context["all_hikes"] = user_hikes.count()
         context["all_distances"] = (
-                user_hikes.aggregate(total=Sum("route__distance"))["total"] or 0
+                user_hikes.aggregate(
+                    total=Sum("route__distance"))["total"] or 0
         )
         context["all_elevations"] = (
-                user_hikes.aggregate(total=Sum("route__elevation"))["total"] or 0
+                user_hikes.aggregate(
+                    total=Sum("route__elevation"))["total"] or 0
         )
         return context
 
@@ -51,7 +57,6 @@ class ProfileView(LoginRequiredMixin, generic.ListView):
 class HikeListView(LoginRequiredMixin, generic.ListView):
     model = Hike
     paginate_by = 6
-
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(HikeListView, self).get_context_data(**kwargs)
@@ -74,7 +79,6 @@ class HikeListView(LoginRequiredMixin, generic.ListView):
         )
         return context
 
-
     def get_queryset(self):
         queryset = Hike.objects.all()
         form = HikeSearchForm(self.request.GET)
@@ -83,7 +87,7 @@ class HikeListView(LoginRequiredMixin, generic.ListView):
             difficulty = self.request.GET.get("difficulty", "")
 
             if hike:
-                 queryset = queryset.filter(
+                queryset = queryset.filter(
                     name__icontains=form.cleaned_data["hike"]
                 )
 
@@ -93,6 +97,7 @@ class HikeListView(LoginRequiredMixin, generic.ListView):
                 )
 
         return queryset
+
 
 class HikeDetailView(LoginRequiredMixin, generic.DetailView):
     model = Hike
@@ -122,6 +127,7 @@ class RouteCreationView(LoginRequiredMixin, generic.CreateView):
     model = Route
     form_class = RouteCreationForm
     success_url = reverse_lazy("tracker:profile")
+
 
 class HikerCreationView(LoginRequiredMixin, generic.CreateView):
     model = Hiker
