@@ -1,0 +1,941 @@
+[
+  {
+    "model": "tracker.difficulty",
+    "pk": 1,
+    "fields": {
+      "name": "Easy",
+      "level": 1
+    }
+  },
+  {
+    "model": "tracker.difficulty",
+    "pk": 2,
+    "fields": {
+      "name": "Moderate",
+      "level": 2
+    }
+  },
+  {
+    "model": "tracker.difficulty",
+    "pk": 3,
+    "fields": {
+      "name": "Hard",
+      "level": 3
+    }
+  },
+  {
+    "model": "tracker.difficulty",
+    "pk": 4,
+    "fields": {
+      "name": "Alpine",
+      "level": 4
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 1,
+    "fields": {
+      "username": "oleksandr_k",
+      "first_name": "Oleksandr",
+      "last_name": "Kovalenko",
+      "email": "oleksandr@example.com",
+      "password": "",
+      "gender": "1",
+      "birth_date": "1988-03-14"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 2,
+    "fields": {
+      "username": "iryna_m",
+      "first_name": "Iryna",
+      "last_name": "Melnyk",
+      "email": "iryna@example.com",
+      "password": "",
+      "gender": "0",
+      "birth_date": "1995-07-22"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 3,
+    "fields": {
+      "username": "taras_b",
+      "first_name": "Taras",
+      "last_name": "Bondar",
+      "email": "taras@example.com",
+      "password": "",
+      "gender": "1",
+      "birth_date": "1979-11-05"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 4,
+    "fields": {
+      "username": "olena_s",
+      "first_name": "Olena",
+      "last_name": "Shevchenko",
+      "email": "olena@example.com",
+      "password": "",
+      "gender": "0",
+      "birth_date": "1992-02-09"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 5,
+    "fields": {
+      "username": "mark_t",
+      "first_name": "Mark",
+      "last_name": "Thompson",
+      "email": "mark@example.com",
+      "password": "",
+      "gender": "1",
+      "birth_date": "1990-01-30"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 6,
+    "fields": {
+      "username": "anna_petrenko",
+      "first_name": "Anna",
+      "last_name": "Petrenko",
+      "email": "anna.p@example.com",
+      "password": "",
+      "gender": "0",
+      "birth_date": "1991-05-18"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 7,
+    "fields": {
+      "username": "dmytro_h",
+      "first_name": "Dmytro",
+      "last_name": "Hrytsenko",
+      "email": "dmytro.h@example.com",
+      "password": "",
+      "gender": "1",
+      "birth_date": "1985-09-02"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 8,
+    "fields": {
+      "username": "sofia_l",
+      "first_name": "Sofia",
+      "last_name": "Lysenko",
+      "email": "sofia.l@example.com",
+      "password": "",
+      "gender": "0",
+      "birth_date": "1998-12-07"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 9,
+    "fields": {
+      "username": "andriy_k",
+      "first_name": "Andriy",
+      "last_name": "Kravchuk",
+      "email": "andriy.k@example.com",
+      "password": "",
+      "gender": "1",
+      "birth_date": "1983-04-25"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 10,
+    "fields": {
+      "username": "kateryna_v",
+      "first_name": "Kateryna",
+      "last_name": "Vasylenko",
+      "email": "kateryna.v@example.com",
+      "password": "",
+      "gender": "0",
+      "birth_date": "1994-08-11"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 11,
+    "fields": {
+      "username": "maksym_r",
+      "first_name": "Maksym",
+      "last_name": "Romanenko",
+      "email": "maksym.r@example.com",
+      "password": "",
+      "gender": "1",
+      "birth_date": "1989-01-14"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 12,
+    "fields": {
+      "username": "victoria_d",
+      "first_name": "Victoria",
+      "last_name": "Danylenko",
+      "email": "victoria.d@example.com",
+      "password": "",
+      "gender": "0",
+      "birth_date": "1996-06-29"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 13,
+    "fields": {
+      "username": "ihor_p",
+      "first_name": "Ihor",
+      "last_name": "Polishchuk",
+      "email": "ihor.p@example.com",
+      "password": "",
+      "gender": "1",
+      "birth_date": "1980-10-03"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 14,
+    "fields": {
+      "username": "natalia_o",
+      "first_name": "Natalia",
+      "last_name": "Osadcha",
+      "email": "natalia.o@example.com",
+      "password": "",
+      "gender": "0",
+      "birth_date": "1993-03-20"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 15,
+    "fields": {
+      "username": "roman_s",
+      "first_name": "Roman",
+      "last_name": "Savchenko",
+      "email": "roman.s@example.com",
+      "password": "",
+      "gender": "1",
+      "birth_date": "1987-07-08"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 16,
+    "fields": {
+      "username": "yulia_t",
+      "first_name": "Yulia",
+      "last_name": "Tkachenko",
+      "email": "yulia.t@example.com",
+      "password": "",
+      "gender": "0",
+      "birth_date": "1999-11-15"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 17,
+    "fields": {
+      "username": "petro_m",
+      "first_name": "Petro",
+      "last_name": "Moroz",
+      "email": "petro.m@example.com",
+      "password": "",
+      "gender": "1",
+      "birth_date": "1976-02-27"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 18,
+    "fields": {
+      "username": "liza_b",
+      "first_name": "Liza",
+      "last_name": "Boyko",
+      "email": "liza.b@example.com",
+      "password": "",
+      "gender": "0",
+      "birth_date": "2000-09-09"
+    }
+  },
+  {
+    "model": "tracker.hiker",
+    "pk": 19,
+    "fields": {
+      "username": "david_w",
+      "first_name": "David",
+      "last_name": "Williams",
+      "email": "david.w@example.com",
+      "password": "",
+      "gender": "1",
+      "birth_date": "1992-12-01"
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 1,
+    "fields": {
+      "name": "Hoverla Classic",
+      "location": "Chornohora Ukraine",
+      "distance": 12.0,
+      "elevation": 1400,
+      "difficulty": 3
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 2,
+    "fields": {
+      "name": "Pip Ivan Trail",
+      "location": "Chornohora Ukraine",
+      "distance": 9.5,
+      "elevation": 900,
+      "difficulty": 2
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 3,
+    "fields": {
+      "name": "Brebeneskul Lake Loop",
+      "location": "Chornohora Ukraine",
+      "distance": 7.0,
+      "elevation": 350,
+      "difficulty": 1
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 4,
+    "fields": {
+      "name": "Malvern Hills Ridge Walk",
+      "location": "Malvern England",
+      "distance": 11.0,
+      "elevation": 400,
+      "difficulty": 1
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 5,
+    "fields": {
+      "name": "Gerlach Peak Route",
+      "location": "High Tatras Slovakia",
+      "distance": 14.5,
+      "elevation": 1700,
+      "difficulty": 3
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 6,
+    "fields": {
+      "name": "Mont Blanc Gouter Route",
+      "location": "Chamonix France",
+      "distance": 16.0,
+      "elevation": 2400,
+      "difficulty": 4
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 7,
+    "fields": {
+      "name": "Kilimanjaro Machame Route",
+      "location": "Tanzania Africa",
+      "distance": 62.0,
+      "elevation": 4900,
+      "difficulty": 3
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 8,
+    "fields": {
+      "name": "Everest Base Camp Trek",
+      "location": "Khumbu Nepal",
+      "distance": 130.0,
+      "elevation": 3000,
+      "difficulty": 3
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 9,
+    "fields": {
+      "name": "Tour du Mont Blanc",
+      "location": "France Italy Switzerland",
+      "distance": 170.0,
+      "elevation": 10000,
+      "difficulty": 3
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 10,
+    "fields": {
+      "name": "Inca Trail to Machu Picchu",
+      "location": "Cusco Peru",
+      "distance": 43.0,
+      "elevation": 2000,
+      "difficulty": 3
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 11,
+    "fields": {
+      "name": "Torres del Paine O Circuit",
+      "location": "Patagonia Chile",
+      "distance": 125.0,
+      "elevation": 5000,
+      "difficulty": 3
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 12,
+    "fields": {
+      "name": "Annapurna Circuit via Thorong La",
+      "location": "Annapurna Nepal",
+      "distance": 160.0,
+      "elevation": 6000,
+      "difficulty": 3
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 13,
+    "fields": {
+      "name": "GR20 Northern Traverse",
+      "location": "Corsica France",
+      "distance": 90.0,
+      "elevation": 7000,
+      "difficulty": 3
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 14,
+    "fields": {
+      "name": "Grand Canyon Rim-to-Rim",
+      "location": "Arizona USA",
+      "distance": 38.0,
+      "elevation": 1800,
+      "difficulty": 3
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 15,
+    "fields": {
+      "name": "Mount Elbrus Summit Approach",
+      "location": "Caucasus Russia",
+      "distance": 20.0,
+      "elevation": 2000,
+      "difficulty": 3
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 16,
+    "fields": {
+      "name": "Mount Kinabalu Summit Trail",
+      "location": "Sabah Malaysia",
+      "distance": 17.0,
+      "elevation": 2300,
+      "difficulty": 3
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 17,
+    "fields": {
+      "name": "Matterhorn Hörnli Ridge",
+      "location": "Swiss Alps",
+      "distance": 12.0,
+      "elevation": 1200,
+      "difficulty": 4
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 18,
+    "fields": {
+      "name": "Mont Blanc via Goûter Route",
+      "location": "French Alps",
+      "distance": 18.0,
+      "elevation": 1800,
+      "difficulty": 4
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 19,
+    "fields": {
+      "name": "Eiger Mittellegi Ridge",
+      "location": "Bernese Alps Switzerland",
+      "distance": 10.0,
+      "elevation": 1400,
+      "difficulty": 4
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 20,
+    "fields": {
+      "name": "Gran Paradiso Summit",
+      "location": "Graian Alps Italy",
+      "distance": 14.0,
+      "elevation": 1300,
+      "difficulty": 4
+    }
+  },
+  {
+    "model": "tracker.route",
+    "pk": 21,
+    "fields": {
+      "name": "Piz Bernina via Biancograt",
+      "location": "Graubünden Switzerland",
+      "distance": 12.0,
+      "elevation": 1500,
+      "difficulty": 4
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 1,
+    "fields": {
+      "name": "Early Start to Hoverla",
+      "description": "Leaving at 5 AM from Breskul",
+      "date": "2026-07-18",
+      "route": 1,
+      "max_hikers": 12,
+      "hikers": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 2,
+    "fields": {
+      "name": "Chornohora Traverse",
+      "description": "Two-day trek with a night in a mountain meadow",
+      "date": "2026-08-08",
+      "route": 2,
+      "max_hikers": 8,
+      "hikers": [
+        2,
+        4,
+        5,
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 3,
+    "fields": {
+      "name": "Brebeneskul Lake for Beginners",
+      "description": "Easy family outing",
+      "date": "2026-06-20",
+      "route": 3,
+      "max_hikers": 15,
+      "hikers": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        16,
+        17
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 4,
+    "fields": {
+      "name": "Malvern Hills Weekend",
+      "description": "Relaxed walk with views over Wales",
+      "date": "2026-05-16",
+      "route": 4,
+      "max_hikers": 20,
+      "hikers": [
+        5,
+        1,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 5,
+    "fields": {
+      "name": "Gerlach at Sunrise",
+      "description": "Overnight ascent with a stay at the mountain hut",
+      "date": "2027-07-10",
+      "route": 5,
+      "max_hikers": 6,
+      "hikers": [
+        3,
+        1,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 6,
+    "fields": {
+      "name": "Mont Blanc via Goûter",
+      "description": "Mountaineering expedition with a guide",
+      "date": "2027-08-01",
+      "route": 6,
+      "max_hikers": 4,
+      "hikers": [
+        3,
+        5,
+        18,
+        19
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 7,
+    "fields": {
+      "name": "Kilimanjaro summit via Machame",
+      "description": "A demanding ascent through rainforest, alpine desert and volcanic scree. The final push to Uhuru Peak begins in freezing darkness.",
+      "date": "2026-09-18",
+      "route": 7,
+      "max_hikers": 10,
+      "hikers": [
+        6,
+        7,
+        8,
+        9,
+        13,
+        14,
+        15,
+        16
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 8,
+    "fields": {
+      "name": "Everest Base Camp Trek",
+      "description": "Followed glacier valleys and Sherpa villages beneath towering Himalayan peaks. Thin air and long climbing days made acclimatisation essential.",
+      "date": "2026-10-11",
+      "route": 8,
+      "max_hikers": 10,
+      "hikers": [
+        10,
+        11,
+        12,
+        17,
+        18,
+        19,
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 9,
+    "fields": {
+      "name": "Tour du Mont Blanc",
+      "description": "A long Alpine traverse with steep passes, exposed paths and constantly changing weather. Every day brought another climb and a new valley.",
+      "date": "2026-09-07",
+      "route": 9,
+      "max_hikers": 10,
+      "hikers": [
+        13,
+        14,
+        15,
+        16,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 10,
+    "fields": {
+      "name": "Inca Trail to Machu Picchu",
+      "description": "Ancient stone paths climbed through cloud forest and high mountain passes before reaching the legendary Inca citadel.",
+      "date": "2026-08-14",
+      "route": 10,
+      "max_hikers": 10,
+      "hikers": [
+        6,
+        8,
+        17,
+        2,
+        4,
+        7,
+        9
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 11,
+    "fields": {
+      "name": "Torres del Paine O Circuit",
+      "description": "Remote trails crossed windswept valleys, glaciers and rugged mountain passes. Strong Patagonian winds made exposed sections especially challenging.",
+      "date": "2026-03-23",
+      "route": 11,
+      "max_hikers": 10,
+      "hikers": [
+        7,
+        10,
+        18,
+        19,
+        1,
+        3,
+        11,
+        12
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 12,
+    "fields": {
+      "name": "Annapurna Circuit via Thorong La",
+      "description": "A high-altitude journey through dry mountain valleys, traditional villages and snowy terrain near the 5,416 m Thorong La Pass.",
+      "date": "2026-10-04",
+      "route": 12,
+      "max_hikers": 10,
+      "hikers": [
+        9,
+        11,
+        13,
+        14,
+        15,
+        16,
+        4,
+        5
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 13,
+    "fields": {
+      "name": "GR20 Northern Traverse",
+      "description": "Jagged granite ridges, steep scrambles and rocky descents turned this demanding long-distance trail into a serious test of endurance.",
+      "date": "2026-06-16",
+      "route": 13,
+      "max_hikers": 10,
+      "hikers": [
+        12,
+        16,
+        17,
+        2,
+        6,
+        8,
+        10
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 14,
+    "fields": {
+      "name": "Grand Canyon Rim-to-Rim",
+      "description": "Descended deep into the canyon and climbed back to the opposite rim. Extreme heat, elevation changes and limited water access demanded careful planning.",
+      "date": "2026-05-09",
+      "route": 14,
+      "max_hikers": 10,
+      "hikers": [
+        18,
+        19,
+        6,
+        1,
+        3,
+        7,
+        9,
+        11
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 15,
+    "fields": {
+      "name": "Mount Elbrus summit approach",
+      "description": "A high-altitude climb over snow and glacial terrain. Freezing temperatures, wind and altitude made the summit attempt physically demanding.",
+      "date": "2026-07-21",
+      "route": 15,
+      "max_hikers": 10,
+      "hikers": [
+        9,
+        12,
+        14,
+        4,
+        16,
+        18,
+        5
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 16,
+    "fields": {
+      "name": "Mount Kinabalu summit trail",
+      "description": "A steep rainforest ascent followed by a bare granite summit plateau. The pre-dawn climb required stamina and careful movement over exposed rock.",
+      "date": "2026-04-02",
+      "route": 16,
+      "max_hikers": 10,
+      "hikers": [
+        10,
+        13,
+        15,
+        2,
+        8,
+        17,
+        19
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 17,
+    "fields": {
+      "name": "Matterhorn Hörnli Ridge",
+      "description": "A technical alpine ascent over exposed rock ridges, narrow passages and steep climbing sections. Stable weather and solid rope skills are essential.",
+      "date": "2026-07-12",
+      "route": 17,
+      "max_hikers": 10,
+      "hikers": [
+        11,
+        16,
+        19,
+        3,
+        6,
+        9,
+        14
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 18,
+    "fields": {
+      "name": "Mont Blanc via Goûter Route",
+      "description": "A high-altitude mountaineering route across glaciers and snow-covered slopes, with crevasse hazards and rapidly changing weather.",
+      "date": "2026-07-19",
+      "route": 18,
+      "max_hikers": 10,
+      "hikers": [
+        7,
+        8,
+        17,
+        1,
+        5,
+        10,
+        12
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 19,
+    "fields": {
+      "name": "Eiger Mittellegi Ridge",
+      "description": "A demanding ridge climb with exposed rock, steep scrambling and sections requiring technical climbing and protection.",
+      "date": "2026-08-25",
+      "route": 19,
+      "max_hikers": 10,
+      "hikers": [
+        14,
+        16,
+        18,
+        2,
+        4,
+        13,
+        15
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 20,
+    "fields": {
+      "name": "Gran Paradiso Summit",
+      "description": "A glacier approach leads to a rocky summit ridge. The final section requires careful movement and may involve scrambling above exposed terrain.",
+      "date": "2026-08-03",
+      "route": 20,
+      "max_hikers": 10,
+      "hikers": [
+        9,
+        15,
+        17,
+        6,
+        7,
+        11,
+        18
+      ]
+    }
+  },
+  {
+    "model": "tracker.hike",
+    "pk": 21,
+    "fields": {
+      "name": "Piz Bernina via Biancograt",
+      "description": "A spectacular high-altitude ridge featuring narrow snow and ice sections, exposed climbing and glacier travel. Advanced mountaineering skills are required.",
+      "date": "2026-08-16",
+      "route": 21,
+      "max_hikers": 10,
+      "hikers": [
+        10,
+        12,
+        19,
+        1,
+        3,
+        8,
+        13
+      ]
+    }
+  }
+]
