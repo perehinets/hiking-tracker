@@ -5,7 +5,7 @@ from django.db import models
 
 
 class Hiker(AbstractUser):
-    gender = models.CharField(choices=((1, "male"), (0, "female")))
+    gender = models.CharField(choices=(("1", "male"), ("0", "female")), default=None)
     birth_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
@@ -39,7 +39,6 @@ class Hike(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     date = models.DateField(default=datetime.datetime.now)
-    route = models.ForeignKey(Route, on_delete=models.CASCADE)
     max_hikers = models.IntegerField(default=0)
     hikers = models.ManyToManyField(Hiker, related_name='hikes')
     route = models.ForeignKey(

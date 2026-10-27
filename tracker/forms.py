@@ -41,7 +41,7 @@ class HikeSearchForm(forms.Form):
 
 
 class HikerCreationForm(UserCreationForm):
-    password = None
+    password1 = None
     password2 = None
     email = forms.EmailField(
         required=True,
