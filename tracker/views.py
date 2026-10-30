@@ -7,6 +7,7 @@ from django.db.models import Sum
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
+from django.views.decorators.http import require_POST
 
 from tracker.forms import (
     HikeCreationForm,
@@ -23,9 +24,12 @@ def index(request):
 
 
 @login_required
+@require_POST
 def hike_join_view(request, pk):
     hike = get_object_or_404(Hike, pk=pk)
-    if hike.hikers.count() >= hike.max_hikers:
+    if hike.hikers.filter(pk=request.user.pk).exists():
+        messages.warning(request, "You have already joined this hike")
+    elif hike.hikers.count() >= hike.max_hikers:
         messages.error(request, "This hike is full.")
     else:
         hike.hikers.add(request.user)
@@ -34,9 +38,15 @@ def hike_join_view(request, pk):
 
 
 @login_required
+@require_POST
 def hike_remove_view(request, pk):
     hike = get_object_or_404(Hike, pk=pk)
-    hike.hikers.remove(request.user)
+    if hike.hikers.filter(pk=request.user.pk).exists():
+        hike.hikers.remove(request.user)
+        messages.success(request, "You have left the hike.")
+    else:
+        messages.warning(request, "You have not joined this hike.")
+
     return redirect("tracker:hikes-list")
 
 
