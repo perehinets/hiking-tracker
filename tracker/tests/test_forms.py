@@ -63,7 +63,7 @@ class FormTests(TestCase):
             "date": datetime.date(2028, 1, 1),
             "description": "test",
             "max_hikers": 10,
-            "hikers" : [self.hiker],
+            "hikers": [self.hiker],
         }
         form = HikeCreationForm(data=form_data)
         self.assertTrue(form.is_valid())

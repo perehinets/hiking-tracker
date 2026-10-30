@@ -153,7 +153,6 @@ class HikeDeleteView(
         return self.get_object().leader == self.request.user
 
 
-
 class RouteCreationView(LoginRequiredMixin, generic.CreateView):
     model = Route
     form_class = RouteCreationForm

@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-from tracker.models import Hiker, Route, Hike, Difficulty
+from tracker.models import Route, Hike, Difficulty
 
 
 class ModelTest(TestCase):
