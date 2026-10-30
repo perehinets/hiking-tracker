@@ -1,11 +1,13 @@
 import datetime
 
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Sum
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic
+
 from tracker.forms import (
     HikeCreationForm,
     RouteCreationForm,
@@ -22,14 +24,18 @@ def index(request):
 
 @login_required
 def hike_join_view(request, pk):
-    hike = Hike.objects.get(pk=pk)
-    hike.hikers.add(request.user)
+    hike = get_object_or_404(Hike, pk=pk)
+    if hike.hikers.count() >= hike.max_hikers:
+        messages.error(request, "This hike is full.")
+    else:
+        hike.hikers.add(request.user)
+        messages.success(request, "You joined the hike.")
     return redirect("tracker:hikes-list")
 
 
 @login_required
 def hike_remove_view(request, pk):
-    hike = Hike.objects.get(pk=pk)
+    hike = get_object_or_404(Hike, pk=pk)
     hike.hikers.remove(request.user)
     return redirect("tracker:hikes-list")
 
