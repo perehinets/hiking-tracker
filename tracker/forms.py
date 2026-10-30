@@ -41,15 +41,11 @@ class HikeSearchForm(forms.Form):
 
 
 class HikerCreationForm(UserCreationForm):
-    password1 = None
-    password2 = None
     email = forms.EmailField(
         required=True,
         widget=forms.TextInput(
             attrs={
                 "placeholder": "email@mail.com",
-                "class": "form-control",
-                "type": "email",
             }
         )
     )
