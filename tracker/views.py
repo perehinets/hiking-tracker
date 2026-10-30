@@ -2,7 +2,7 @@ import datetime
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.db.models import Sum
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
@@ -128,15 +128,30 @@ class HikeCreationView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("tracker:profile")
 
 
-class HikeUpdateView(LoginRequiredMixin, generic.UpdateView):
+class HikeUpdateView(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    generic.UpdateView
+):
     model = Hike
     fields = "__all__"
     success_url = reverse_lazy("tracker:profile")
 
+    def test_func(self):
+        return self.get_object().leader == self.request.user
 
-class HikeDeleteView(LoginRequiredMixin, generic.DeleteView):
+
+class HikeDeleteView(
+    LoginRequiredMixin,
+    UserPassesTestMixin,
+    generic.DeleteView
+):
     model = Hike
     success_url = reverse_lazy("tracker:profile")
+
+    def test_func(self):
+        return self.get_object().leader == self.request.user
+
 
 
 class RouteCreationView(LoginRequiredMixin, generic.CreateView):
