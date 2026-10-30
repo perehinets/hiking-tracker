@@ -91,26 +91,29 @@
                 <span><i class="fas fa-route"></i>{{ hike.route.distance }} km</span>
                 <span><i class="fas fa-arrow-trend-up"></i>{{ hike.route.elevation }} m</span>
                 <span>{{ hike.hikers.count }} / {{ hike.max_hikers }} person</span>
+                <span>{{ hike.date }}</span>
               </div>
-              <div class="hike-actions">
-                {{ hike.date }}
-                {% if hike.date > today %}
-                  {% if user in hike.hikers.all %}
-                    <form method="post" action="{% url 'tracker:hike-remove-hiker' pk=hike.pk %}">
-                      {% csrf_token %}
-                      <button type="submit">Cancel hike</button>
-                    </form>
-                  {% else %}
-                    {% if hike.hikers.count < hike.max_hikers %}
-                      <form method="post" action="{% url 'tracker:hike-join-hiker' pk=hike.pk %}">
+              <div class="mt-2 d-flex align-content-center">
+                <div class="m-1"><a href="{% url 'tracker:hike-detail' pk=hike.id %}"
+                                        class="btn btn-outline-primary btn-app">Detail</a></div>
+                <div class="m-1">
+                  {% if hike.date > today %}
+                    {% if user in hike.hikers.all %}
+                      <form method="post" action="{% url 'tracker:hike-remove-hiker' pk=hike.pk %}">
                         {% csrf_token %}
-                        <button type="submit">Join hike</button>
+                        <button type="submit" class="btn btn-outline-secondary btn-app"><i class="fas fa-minus me-2"></i> Cancel</button>
                       </form>
+                    {% else %}
+                      {% if hike.hikers.count < hike.max_hikers %}
+                        <form method="post" action="{% url 'tracker:hike-join-hiker' pk=hike.pk %}">
+                          {% csrf_token %}
+                          <button type="submit" class="btn btn-outline-primary btn-app"><i class="fas fa-plus me-2"></i>Join</button>
+                        </form>
+                      {% endif %}
                     {% endif %}
                   {% endif %}
-                {% endif %}
+                </div>
               </div>
-              <p><a href="{% url 'tracker:hike-detail' pk=hike.id %}">Detail</a></p>
             </article>
           </div>
         {% endfor %}
