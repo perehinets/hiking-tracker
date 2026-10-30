@@ -5,7 +5,12 @@ from django.db import models
 
 
 class Hiker(AbstractUser):
-    gender = models.CharField(choices=(("1", "male"), ("0", "female")), default=None)
+    gender = models.CharField(
+        choices=(("1", "male"), ("0", "female")),
+        default=None,
+        null=True,
+        blank=True,
+    )
     birth_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
