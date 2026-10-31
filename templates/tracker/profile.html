@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+  {% include 'includes/navbar.html' %}
+  <!-- Masthead-->
+  <header class="profile-page-header">
+  </header>
+  <main class="app-main" id="hikes">
+    <div class="container px-4 px-lg-5">
+      <!-- Totals-->
+      <div class="row gx-3 gy-3 mb-5">
+        <div class="col-12 col-md-4">
+          <div class="stat-tile">
+            <div class="stat-label">Hikes</div>
+            <div class="stat-value"> {{ all_hikes }}</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="stat-tile">
+            <div class="stat-label">Distance</div>
+            <div class="stat-value">{{ all_distances }}<span class="unit">km</span></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="stat-tile">
+            <div class="stat-label">Elevation gain</div>
+            <div class="stat-value">{{ all_elevations }}<span class="unit">m</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- List heading-->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+          <div class="eyebrow mb-1">Logbook</div>
+          <h2 class="h4 mb-0">My hikes</h2>
+        </div>
+        <div class="d-flex align-items-center justify-content-end">
+          <p class="p-1"><a class="btn btn-outline-primary btn-app" href="{% url 'tracker:add-hike' %}"><i
+              class="fas fa-plus me-2"></i>Add hike</a>
+          </p>
+          <p class="p-1"><a class="btn btn-outline-secondary btn-app" href="{% url 'tracker:add-route' %}"><i
+              class="fas fa-plus me-2"></i>Add Route</a>
+          </p>
+          <p class="p-1"><a class="btn btn-outline-success btn-app" href="{% url 'tracker:hiker-create' %}"><i
+              class="fas fa-plus me-2"></i>Create Hiker</a>
+          </p>
+        </div>
+      </div>
+      <!-- Hike list - one card per hike-->
+      <div class="row gx-3 gy-3">
+        {% for hike in user_hikes %}
+          <div class="col-md-6">
+            <article class="hike-card">
+              <span
+                  class="badge-trail badge-{{ hike.route.difficulty.name }} align-self-start">{{ hike.route.difficulty.name }}</span>
+              <h3 class="hike-title">{{ hike.name }}</h3>
+              <div class="hike-place"><i class="fas fa-location-dot me-1"></i>{{ hike.route.location }}
+                &middot; {{ hike.date }}</div>
+              <p class="hike-notes">{{ hike.description }}</p>
+              <p class="hike-notes">Leader: {{ hike.leader.username|default:"Not assigned" }} </p>
+              <div class="hike-metrics">
+                <span><i class="fas fa-route"></i>{{ hike.route.distance }} km</span>
+                <span><i class="fas fa-arrow-trend-up"></i>{{ hike.route.elevation }} m</span>
+                <span>{{ hike.hikers.count }} / {{ hike.max_hikers }} person</span>
+              </div>
+              <div class="hike-actions">
+                {{ hike.date }}
+                {% if user in hike.hikers %}
+                  <form class="d-inline" method="post" action="#">
+                    <button type="submit">Cancel</button>
+                  </form>
+                {% endif %}
+
+              </div>
+              <div>
+
+                <div class="mt-2 d-flex align-content-center">
+                  <div class="m-1">
+                    <a href="{% url 'tracker:hike-detail' pk=hike.id %}"
+                       class="btn btn-outline-primary btn-app">Detail</a>
+                  </div>
+                  {% if hike.leader.username == user.username %}
+                    <div class="m-1">
+                      <a class="btn btn-outline-secondary btn-app"
+                         href="{% url 'tracker:hike-update' pk=hike.id %}">Edit</a>
+                    </div>
+                    <div>
+                      <a class="btn btn-outline-danger btn-app" href=" {% url 'tracker:hike-delete' pk=hike.id %}">Delete</a>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+
+
+            </article>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+  </main>
+{% endblock %}

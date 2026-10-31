@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+  {% include 'includes/navbar.html' %}
+  <!-- Masthead-->
+  <header class="profile-page-header">
+  </header>
+  <main class="app-main" id="hikes">
+    <div class="container px-4 px-lg-5">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }} alert-dismissible fade show"
+               role="alert">
+            {{ message }}
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close">
+            </button>
+          </div>
+        {% endfor %}
+      {% endif %}
+      <!-- Totals-->
+      <div class="row gx-3 gy-3 mb-5">
+        <div class="col-12 col-md-4">
+          <div class="stat-tile">
+            <div class="stat-label">Hikes</div>
+            <div class="stat-value">{{ all_hikes }}</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="stat-tile">
+            <div class="stat-label">Distance</div>
+            <div class="stat-value">{{ all_distances }}<span class="unit">km</span></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="stat-tile">
+            <div class="stat-label">Elevation gain</div>
+            <div class="stat-value">{{ all_elevations }}<span class="unit">m</span></div>
+          </div>
+        </div>
+      </div>
+      <!-- List heading-->
+      <div class="row gx-3 gy-3">
+
+        <div class="col-md-6">
+          <form action="" method="get" class="form-panel mb-3">
+            {{ search_form|crispy }}
+            <input type="submit" value="Find Hikes" class="btn btn-outline-success btn-app">
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <form action="" method="get" class="form-panel">
+            <label for="difficulty" class="gx-0 gy-0 mb-3">Choose a difficulty:</label>
+            <select name="difficulty" id="difficulty" class="form-select mb-3" onchange="this.form.submit()">
+              <option value="" selected="selected" class="selected">All difficulties</option>
+              <option value="1"
+                  {% if request.GET.difficulty == "1" %} selected="selected" {% endif %}
+              >Easy
+              </option>
+              <option value="2"
+                  {% if request.GET.difficulty == "2" %} selected="selected" {% endif %}>Moderate
+              </option>
+              <option value="3"
+                  {% if request.GET.difficulty == "3" %} selected="selected" {% endif %}>Hard
+              </option>
+              <option value="4"
+                  {% if request.GET.difficulty == "4" %} selected="selected" {% endif %}>Alpine
+              </option>
+            </select>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Hike list - one card per hike-->
+      <div class="row gx-3 gy-3">
+        {% for hike in hike_list %}
+          <div class="col-md-6">
+            <article class="hike-card">
+              <span
+                  class="badge-trail badge-{{ hike.route.difficulty.name }} align-self-start">{{ hike.route.difficulty.name }}</span>
+              <h3 class="hike-title">{{ hike.name }}</h3>
+              <div class="hike-place"><i class="fas fa-location-dot me-1"></i>{{ hike.route.location }}
+                &middot; {{ hike.date }}</div>
+              <p class="hike-notes">{{ hike.description }}</p>
+              <p class="hike-notes">Leader: {{ hike.leader.username|default:"Not assigned" }} </p>
+              <div class="hike-metrics">
+                <span><i class="fas fa-route"></i>{{ hike.route.distance }} km</span>
+                <span><i class="fas fa-arrow-trend-up"></i>{{ hike.route.elevation }} m</span>
+                <span>{{ hike.hikers.count }} / {{ hike.max_hikers }} person</span>
+                <span>{{ hike.date }}</span>
+              </div>
+              <div class="mt-2 d-flex align-content-center">
+                <div class="m-1"><a href="{% url 'tracker:hike-detail' pk=hike.id %}"
+                                        class="btn btn-outline-primary btn-app">Detail</a></div>
+                <div class="m-1">
+                  {% if hike.date > today %}
+                    {% if user in hike.hikers.all %}
+                      <form method="post" action="{% url 'tracker:hike-remove-hiker' pk=hike.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-secondary btn-app"><i class="fas fa-minus me-2"></i> Cancel</button>
+                      </form>
+                    {% else %}
+                      {% if hike.hikers.count < hike.max_hikers %}
+                        <form method="post" action="{% url 'tracker:hike-join-hiker' pk=hike.pk %}">
+                          {% csrf_token %}
+                          <button type="submit" class="btn btn-outline-primary btn-app"><i class="fas fa-plus me-2"></i>Join</button>
+                        </form>
+                      {% endif %}
+                    {% endif %}
+                  {% endif %}
+                </div>
+              </div>
+            </article>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% block pagination %}
+      {% include "includes/pagination.html" %}
+    {% endblock %}
+  </main>
+{% endblock %}
