@@ -1,6 +1,7 @@
 import datetime
 
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import MinValueValidator
 from django.db import models
 
 
@@ -44,7 +45,10 @@ class Hike(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     date = models.DateField(default=datetime.datetime.now)
-    max_hikers = models.IntegerField(default=0)
+    max_hikers = models.PositiveIntegerField(
+        default=1,
+        validators=[MinValueValidator(1)],
+    )
     hikers = models.ManyToManyField(Hiker, related_name='hikes')
     route = models.ForeignKey(
         Route,
