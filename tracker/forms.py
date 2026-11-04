@@ -12,8 +12,7 @@ class HikeCreationForm(forms.ModelForm):
             "route",
             "date",
             "description",
-            "max_hikers",
-            "hikers"
+            "max_hikers"
         ]
 
 
