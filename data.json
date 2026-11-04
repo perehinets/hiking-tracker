@@ -3,7 +3,7 @@
     "model": "tracker.difficulty",
     "pk": 1,
     "fields": {
-      "name": "Easy",
+      "name": "easy",
       "level": 1
     }
   },
@@ -11,7 +11,7 @@
     "model": "tracker.difficulty",
     "pk": 2,
     "fields": {
-      "name": "Moderate",
+      "name": "moderate",
       "level": 2
     }
   },
@@ -19,7 +19,7 @@
     "model": "tracker.difficulty",
     "pk": 3,
     "fields": {
-      "name": "Hard",
+      "name": "hard",
       "level": 3
     }
   },
@@ -27,7 +27,7 @@
     "model": "tracker.difficulty",
     "pk": 4,
     "fields": {
-      "name": "Alpine",
+      "name": "alpine",
       "level": 4
     }
   },
@@ -518,6 +518,7 @@
       "date": "2026-07-18",
       "route": 1,
       "max_hikers": 12,
+      "owner": 1,
       "hikers": [
         1,
         2,
@@ -539,6 +540,7 @@
       "date": "2026-08-08",
       "route": 2,
       "max_hikers": 8,
+      "owner": 2,
       "hikers": [
         2,
         4,
@@ -560,6 +562,7 @@
       "date": "2026-06-20",
       "route": 3,
       "max_hikers": 15,
+      "owner": 4,
       "hikers": [
         4,
         5,
@@ -582,6 +585,7 @@
       "date": "2026-05-16",
       "route": 4,
       "max_hikers": 20,
+      "owner": 5,
       "hikers": [
         5,
         1,
@@ -605,6 +609,7 @@
       "date": "2027-07-10",
       "route": 5,
       "max_hikers": 6,
+      "owner": 3,
       "hikers": [
         3,
         1,
@@ -624,6 +629,7 @@
       "date": "2027-08-01",
       "route": 6,
       "max_hikers": 4,
+      "owner": 3,
       "hikers": [
         3,
         5,
@@ -641,6 +647,7 @@
       "date": "2026-09-18",
       "route": 7,
       "max_hikers": 10,
+      "owner": 6,
       "hikers": [
         6,
         7,
@@ -662,6 +669,7 @@
       "date": "2026-10-11",
       "route": 8,
       "max_hikers": 10,
+      "owner": 10,
       "hikers": [
         10,
         11,
@@ -683,6 +691,7 @@
       "date": "2026-09-07",
       "route": 9,
       "max_hikers": 10,
+      "owner": 13,
       "hikers": [
         13,
         14,
@@ -704,6 +713,7 @@
       "date": "2026-08-14",
       "route": 10,
       "max_hikers": 10,
+      "owner": 6,
       "hikers": [
         6,
         8,
@@ -724,6 +734,7 @@
       "date": "2026-03-23",
       "route": 11,
       "max_hikers": 10,
+      "owner": 7,
       "hikers": [
         7,
         10,
@@ -745,6 +756,7 @@
       "date": "2026-10-04",
       "route": 12,
       "max_hikers": 10,
+      "owner": 9,
       "hikers": [
         9,
         11,
@@ -766,6 +778,7 @@
       "date": "2026-06-16",
       "route": 13,
       "max_hikers": 10,
+      "owner": 12,
       "hikers": [
         12,
         16,
@@ -786,6 +799,7 @@
       "date": "2026-05-09",
       "route": 14,
       "max_hikers": 10,
+      "owner": 18,
       "hikers": [
         18,
         19,
@@ -807,6 +821,7 @@
       "date": "2026-07-21",
       "route": 15,
       "max_hikers": 10,
+      "owner": 9,
       "hikers": [
         9,
         12,
@@ -827,6 +842,7 @@
       "date": "2026-04-02",
       "route": 16,
       "max_hikers": 10,
+      "owner": 10,
       "hikers": [
         10,
         13,
@@ -847,6 +863,7 @@
       "date": "2026-07-12",
       "route": 17,
       "max_hikers": 10,
+      "owner": 11,
       "hikers": [
         11,
         16,
@@ -867,6 +884,7 @@
       "date": "2026-07-19",
       "route": 18,
       "max_hikers": 10,
+      "owner": 7,
       "hikers": [
         7,
         8,
@@ -887,6 +905,7 @@
       "date": "2026-08-25",
       "route": 19,
       "max_hikers": 10,
+      "owner": 14,
       "hikers": [
         14,
         16,
@@ -907,6 +926,7 @@
       "date": "2026-08-03",
       "route": 20,
       "max_hikers": 10,
+      "owner": 9,
       "hikers": [
         9,
         15,
@@ -927,6 +947,7 @@
       "date": "2026-08-16",
       "route": 21,
       "max_hikers": 10,
+      "owner": 10,
       "hikers": [
         10,
         12,

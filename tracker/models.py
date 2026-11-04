@@ -51,14 +51,13 @@ class Hike(models.Model):
         on_delete=models.CASCADE,
         related_name='hikes',
     )
+    owner = models.ForeignKey(
+        Hiker,
+        on_delete=models.CASCADE,
+        related_name='owned_hikes',
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return self.name
-
-    @property
-    def leader(self):
-        through_model = self.hikers.through
-        first_hiker = through_model.objects.filter(
-            hike_id=self.id
-        ).order_by("id").first()
-        return first_hiker.hiker if first_hiker else None

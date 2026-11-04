@@ -127,6 +127,10 @@ class HikeCreationView(LoginRequiredMixin, generic.CreateView):
     form_class = HikeCreationForm
     success_url = reverse_lazy("tracker:profile")
 
+    def form_valid(self, form):
+        form.instance.owner = self.request.user
+        return super().form_valid(form)
+
 
 class HikeUpdateView(
     LoginRequiredMixin,
@@ -136,9 +140,6 @@ class HikeUpdateView(
     model = Hike
     fields = "__all__"
     success_url = reverse_lazy("tracker:profile")
-
-    def test_func(self):
-        return self.get_object().leader == self.request.user
 
 
 class HikeDeleteView(

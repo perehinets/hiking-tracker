@@ -14,7 +14,7 @@
         <div class="hike-place"><i class="fas fa-location-dot me-1"></i>{{ hike.route.location }}
           &middot; {{ hike.date }}</div>
         <p class="hike-notes">{{ hike.description }}</p>
-        <p class="hike-notes">Leader: {{ hike.leader.username|default:"Not assigned" }} </p>
+        <p class="hike-notes">Leader: {{ hike.owner.username }} </p>
         <p class="hike-notes">Hikers:
           {% for hiker in  hike.hikers.all %}
             {{ hiker.username }}{% if not forloop.last %}, {% endif %}

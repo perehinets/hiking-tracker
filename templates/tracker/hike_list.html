@@ -86,7 +86,7 @@
               <div class="hike-place"><i class="fas fa-location-dot me-1"></i>{{ hike.route.location }}
                 &middot; {{ hike.date }}</div>
               <p class="hike-notes">{{ hike.description }}</p>
-              <p class="hike-notes">Leader: {{ hike.leader.username|default:"Not assigned" }} </p>
+              <p class="hike-notes">Leader: {{ hike.owner.username }} </p>
               <div class="hike-metrics">
                 <span><i class="fas fa-route"></i>{{ hike.route.distance }} km</span>
                 <span><i class="fas fa-arrow-trend-up"></i>{{ hike.route.elevation }} m</span>
