@@ -145,6 +145,9 @@ class HikeUpdateView(
     fields = "__all__"
     success_url = reverse_lazy("tracker:profile")
 
+    def test_func(self):
+        return self.get_object().owner == self.request.user
+
 
 class HikeDeleteView(
     LoginRequiredMixin,
@@ -155,7 +158,7 @@ class HikeDeleteView(
     success_url = reverse_lazy("tracker:profile")
 
     def test_func(self):
-        return self.get_object().leader == self.request.user
+        return self.get_object().owner == self.request.user
 
 
 class RouteCreationView(LoginRequiredMixin, generic.CreateView):
