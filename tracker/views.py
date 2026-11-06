@@ -1,4 +1,6 @@
 import datetime
+from urllib import response
+from xml.dom import ValidationErr
 
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -27,14 +29,14 @@ def index(request):
 @require_POST
 def hike_join_view(request, pk):
     hike = get_object_or_404(Hike, pk=pk)
-    if hike.hikers.filter(pk=request.user.pk).exists():
-        messages.warning(request, "You have already joined this hike")
-    elif hike.hikers.count() >= hike.max_hikers:
-        messages.error(request, "This hike is full.")
-    else:
-        hike.hikers.add(request.user)
+    try:
+        hike.add_hiker(request.user)
         messages.success(request, "You joined the hike.")
+    except ValidationErr as error:
+        messages.warning(request, error.message)
+
     return redirect("tracker:hikes-list")
+
 
 
 @login_required
@@ -42,7 +44,7 @@ def hike_join_view(request, pk):
 def hike_remove_view(request, pk):
     hike = get_object_or_404(Hike, pk=pk)
     if hike.hikers.filter(pk=request.user.pk).exists():
-        hike.hikers.remove(request.user)
+        hike.remove_hiker(request.user)
         messages.success(request, "You have left the hike.")
     else:
         messages.warning(request, "You have not joined this hike.")
@@ -129,7 +131,9 @@ class HikeCreationView(LoginRequiredMixin, generic.CreateView):
 
     def form_valid(self, form):
         form.instance.owner = self.request.user
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        self.object.hikers.add(self.request.user)
+        return response
 
 
 class HikeUpdateView(

@@ -64,11 +64,6 @@
               </div>
               <div class="hike-actions">
                 {{ hike.date }}
-                {% if user in hike.hikers %}
-                  <form class="d-inline" method="post" action="#">
-                    <button type="submit">Cancel</button>
-                  </form>
-                {% endif %}
 
               </div>
               <div>
@@ -78,12 +73,22 @@
                     <a href="{% url 'tracker:hike-detail' pk=hike.id %}"
                        class="btn btn-outline-primary btn-app">Detail</a>
                   </div>
-                  {% if hike.leader.username == user.username %}
+                  <div class="m-1">
+                    {% if user in hike.hikers.all and user.username != hike.owner.username%}
+                      <form method="post" action="{% url 'tracker:hike-remove-hiker' pk=hike.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline-secondary btn-app"><i
+                            class="fas fa-minus me-2"></i> Cancel
+                        </button>
+                      </form>
+                    {% endif %}
+                  </div>
+                  {% if hike.owner.username == user.username %}
                     <div class="m-1">
                       <a class="btn btn-outline-secondary btn-app"
                          href="{% url 'tracker:hike-update' pk=hike.id %}">Edit</a>
                     </div>
-                    <div>
+                    <div class="m-1">
                       <a class="btn btn-outline-danger btn-app" href=" {% url 'tracker:hike-delete' pk=hike.id %}">Delete</a>
                     </div>
                   {% endif %}

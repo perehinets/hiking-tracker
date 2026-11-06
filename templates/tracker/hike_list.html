@@ -101,13 +101,16 @@
                     {% if user in hike.hikers.all %}
                       <form method="post" action="{% url 'tracker:hike-remove-hiker' pk=hike.pk %}">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-outline-secondary btn-app"><i class="fas fa-minus me-2"></i> Cancel</button>
+                        <button type="submit" class="btn btn-outline-secondary btn-app"><i
+                            class="fas fa-minus me-2"></i> Cancel
+                        </button>
                       </form>
                     {% else %}
                       {% if hike.hikers.count < hike.max_hikers %}
                         <form method="post" action="{% url 'tracker:hike-join-hiker' pk=hike.pk %}">
                           {% csrf_token %}
-                          <button type="submit" class="btn btn-outline-primary btn-app"><i class="fas fa-plus me-2"></i>Join</button>
+                          <button type="submit" class="btn btn-outline-primary btn-app"><i class="fas fa-plus me-2"></i>Join
+                          </button>
                         </form>
                       {% endif %}
                     {% endif %}

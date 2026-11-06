@@ -1,8 +1,9 @@
 import datetime
 
 from django.contrib.auth.models import AbstractUser
+from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator
-from django.db import models
+from django.db import models, transaction
 
 
 class Hiker(AbstractUser):
@@ -62,6 +63,20 @@ class Hike(models.Model):
         blank=True,
         null=True,
     )
+
+    def add_hiker(self, hiker):
+        with transaction.atomic():
+            hike = Hike.objects.select_for_update().get(pk=self.pk)
+            if hike.hikers.filter(pk=hiker.pk).exists():
+                return
+            if hike.hikers.count() >= hike.max_hikers:
+                raise ValidationError(
+                    "This hike has reached its maximum capacity."
+                )
+            hike.hikers.add(hiker)
+
+    def remove_hiker(self, hiker):
+        self.hikers.remove(hiker)
 
     def __str__(self):
         return self.name
