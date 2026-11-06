@@ -49,6 +49,8 @@ class FormTests(TestCase):
             "email": "test1@test.com",
             "first_name": "test1",
             "last_name": "test1",
+            "password1": "pass11224531",
+            "password2": "pass11224531",
             "gender": "1",
             "birth_date": datetime.date(1970, 1, 1),
         }
@@ -71,6 +73,7 @@ class FormTests(TestCase):
     def test_hike_search_form_is_valid(self):
         form_data = {
             "hike": "test",
+            "difficulty": self.difficulty,
         }
         form = HikeSearchForm(data=form_data)
         self.assertTrue(form.is_valid())
