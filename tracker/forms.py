@@ -33,11 +33,16 @@ class HikeSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Search hikes...",
+                "placeholder": "Search by name",
             }
         ),
     )
-
+    difficulty = forms.ModelChoiceField(
+        queryset=Difficulty.objects.all(),
+        required=False,
+        empty_label="Any difficulty",
+        label="",
+    )
 
 class HikerCreationForm(UserCreationForm):
     email = forms.EmailField(

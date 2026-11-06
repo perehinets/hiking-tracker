@@ -76,45 +76,35 @@ class HikeListView(LoginRequiredMixin, generic.ListView):
     model = Hike
     paginate_by = 6
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        context = super(HikeListView, self).get_context_data(**kwargs)
-        hike = self.request.GET.get("hike", "")
-
-        all_hikes = Hike.objects.all().count()
-        all_distances = Hike.objects.aggregate(
-            total=Sum("route__distance")
-        )["total"] or 0
-
-        all_elevations = Hike.objects.aggregate(
-            total=Sum("route__elevation")
-        )["total"] or 0
-        context["today"] = datetime.date.today()
-        context["all_hikes"] = all_hikes
-        context["all_distances"] = all_distances
-        context["all_elevations"] = all_elevations
-        context["search_form"] = HikeSearchForm(
-            initial={"hike": hike}
-        )
-        return context
-
     def get_queryset(self):
         queryset = Hike.objects.all()
-        form = HikeSearchForm(self.request.GET)
-        if form.is_valid():
-            hike = form.cleaned_data["hike"]
-            difficulty = self.request.GET.get("difficulty", "")
+        self.search_form = HikeSearchForm(self.request.GET or None)
+
+        if self.search_form.is_valid():
+            hike = self.search_form.cleaned_data["hike"]
+            difficulty = self.search_form.cleaned_data["difficulty"]
 
             if hike:
-                queryset = queryset.filter(
-                    name__icontains=form.cleaned_data["hike"]
-                )
-
+                queryset = queryset.filter(name__icontains=hike)
             if difficulty:
-                queryset = queryset.filter(
-                    route__difficulty=difficulty
-                )
+                queryset = queryset.filter(route__difficulty=difficulty)
 
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        totals = Hike.objects.aggregate(
+            all_distances=Sum("route__distance"),
+            all_elevations=Sum("route__elevation"),
+        )
+
+        context["today"] = datetime.date.today()
+        context["all_hikes"] = Hike.objects.count()
+        context["all_distances"] = totals["all_distances"] or 0
+        context["all_elevations"] = totals["all_elevations"] or 0
+        context["search_form"] = self.search_form
+        return context
 
 
 class HikeDetailView(LoginRequiredMixin, generic.DetailView):
