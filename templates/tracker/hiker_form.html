@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% block title %}<title>Hiking Tracker - Add new hike</title>{% endblock %}
+
+{% block content %}
+{% include 'includes/navbar.html' %}
+  <!-- Masthead-->
+  <header class="profile-page-header"></header>
+  <main class="app-main">
+    <div class="container px-4 px-lg-5">
+      <div class="row">
+          <form class="form-panel" method="post" action="" novalidate>
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <div class="d-flex flex-wrap gap-2 mt-4">
+              <button class="btn btn-primary btn-app" type="submit">Create hiker</button>
+              <a class="btn btn-outline-secondary btn-app" href="{% url 'tracker:profile' %}">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+  </main>
+{% endblock %}
