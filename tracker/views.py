@@ -1,7 +1,6 @@
 import datetime
-from urllib import response
-from xml.dom import ValidationErr
 
+from django.core.exceptions import ValidationError
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -32,11 +31,10 @@ def hike_join_view(request, pk):
     try:
         hike.add_hiker(request.user)
         messages.success(request, "You joined the hike.")
-    except ValidationErr as error:
-        messages.warning(request, error.message)
+    except ValidationError as error:
+        raise error.message[0]
 
     return redirect("tracker:hikes-list")
-
 
 
 @login_required
@@ -132,7 +130,7 @@ class HikeUpdateView(
     generic.UpdateView
 ):
     model = Hike
-    fields = "__all__"
+    form_class = HikeCreationForm
     success_url = reverse_lazy("tracker:profile")
 
     def test_func(self):

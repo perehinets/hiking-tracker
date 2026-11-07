@@ -44,6 +44,7 @@ class HikeSearchForm(forms.Form):
         label="",
     )
 
+
 class HikerCreationForm(UserCreationForm):
     email = forms.EmailField(
         required=True,
