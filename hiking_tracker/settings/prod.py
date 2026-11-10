@@ -5,9 +5,6 @@ from .base import *
 import dj_database_url
 
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-a+)^u*gx2w4vc)^=!orecds5_%dt@u!s7$q8$m8@ecc7#_2r2l'
-
 DEBUG = False
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
