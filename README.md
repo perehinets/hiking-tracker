@@ -90,3 +90,6 @@ pytest
 ## Purpose
 
 This project demonstrates practical experience with Django models, ORM relationships, class-based views, authentication, pagination, and database queries.
+
+## Live Demo
+[httphttps://hiking-tracker-legw.onrender.com/](https://hiking-tracker-legw.onrender.com/)
